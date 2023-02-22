@@ -4,10 +4,13 @@ public class Vetor {
     private String[] elementos;
     private int tamanho;
     
+    //construindo/tornando acessivel a classe/objeto
     public Vetor(int capacidade){
         this.elementos = new String[capacidade];
         this.tamanho=0;
     }
+
+    //metodo que adiciona elementos dentro do objeto
     public void adiciona(String elemento)throws Exception{
         this.aumentaCapacidade();
 
@@ -23,6 +26,8 @@ public class Vetor {
         return this.tamanho;
     }
 
+
+    //metodo que apresenta os elementos presentes no objeto
     @Override
     public String toString(){
         StringBuilder s = new StringBuilder();
@@ -41,6 +46,8 @@ public class Vetor {
         return s.toString();
     }
 
+
+    //metodo que busca um elemento em especifico baseado em sua posição
     public String busca(int posicao)throws Exception{
         if(posicao>=0 && posicao< tamanho){
             return elementos[posicao];
@@ -49,6 +56,8 @@ public class Vetor {
         }
     }
 
+
+    //metodo que busca um elemento em especifico basedo no proprio elemento
     public int busca1(String elemento){
         for (int i=0; i<tamanho; i++){
             if(elementos[i].equals(elemento)){
@@ -58,6 +67,7 @@ public class Vetor {
         return -1;
     }
 
+    //metodo que adiciona elemento no inicio do vetor (na posição 0) mesmo que ela esteja ocupada, ela converte todos os elementos para a posição ao lado (+1) e deixa livre a posição 0 para ser preenchida
     public Boolean adicionaInicio (int posicao, String elemento) throws Exception {
         this.aumentaCapacidade();
 
@@ -73,6 +83,7 @@ public class Vetor {
         return true;
     }
 
+    //metodo que aumenta a capacidade do vetor, dobrando sempre que necessario ao atingir o limite dele.
     private void aumentaCapacidade(){
         if(this.tamanho==this.elementos.length){
             String[] elementosNovos = new String [this.elementos.length*2];
@@ -83,6 +94,7 @@ public class Vetor {
         }
     }
 
+    //metodo que remove elemento baseado em sua posição
     public void remove(int posicao) throws Exception{
         if (posicao>=0 && posicao < tamanho){
             for(int i=posicao; i<this.tamanho-1; i++) {
